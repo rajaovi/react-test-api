@@ -17,7 +17,6 @@ const Userchar = () => {
             const data = res.data;
             console.log('data',data);
             setApiData(data)
-            console.log("data", data);
         },
         (err) => {
             alert('Error With the API');

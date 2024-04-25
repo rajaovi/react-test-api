@@ -2,6 +2,7 @@ import { useState } from 'react';
 import axiosRes from '../../api/axiosRes';
 import './index.scss'
 import Backtohome from '../../component/backHome';
+import InputString from "../../component/textInput";
 import Button from '../../component/button';
 
 const Commentemail = () => {
@@ -31,7 +32,12 @@ const Commentemail = () => {
     <div>
         <Backtohome />
         <form onSubmit={handleSubmit} className='input'>
-            <input type='text' value={inputVal} onChange={(e) => {setInputVal(e.target.value)}} placeholder='Enter Domain'/>
+            <InputString
+                inputType="text"
+                inputReqired={true}
+                inputPlaceholder="Enter Domain"
+                onChangeInput={setInputVal}
+            />
             <Button btnColor="green" value="Submit" />
         </form>
         {

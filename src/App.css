@@ -21,21 +21,13 @@ table {
 a {
   text-decoration: none;
 }
-ul,ol {
+ul,
+ol,
+p {
   margin: 0;
   padding: 0;
 }
 li {
   list-style: none;
   padding-bottom: .5em;
-}
-
-input {
-  background-color: #fff;
-  border: 1px solid #000;
-  font-size: 15px;
-  min-width: 240px;
-  min-height: 2.1rem;
-  margin-right: 10px;
-  padding: 0px 6px;
 }
