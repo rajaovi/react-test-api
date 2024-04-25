@@ -10,6 +10,9 @@ const Apilist = () => {
                 <li>
                     <Link to="/comment-email">Comment Email</Link>
                 </li>
+                <li>
+                    <Link to="/user-char">User Character</Link>
+                </li>
             </ul>
         </div>
     )

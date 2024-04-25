@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import axiosRes from '../../api/axiosRes';
 import './index.scss'
+import Backtohome from '../../component/backHome';
+import Button from '../../component/button';
 
 const Commentemail = () => {
     const [inputVal, setInputVal] = useState('');
     const [commentData, setCommentData] = useState([]);
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
         console.log('inputVal', inputVal);
         axiosRes(
             'https://jsonplaceholder.typicode.com/comments',
@@ -26,10 +29,11 @@ const Commentemail = () => {
     }
   return (
     <div>
-        <div className='input'>
+        <Backtohome />
+        <form onSubmit={handleSubmit} className='input'>
             <input type='text' value={inputVal} onChange={(e) => {setInputVal(e.target.value)}} placeholder='Enter Domain'/>
-            <button onClick={handleSubmit}>Submit</button>
-        </div>
+            <Button btnColor="green" value="Submit" />
+        </form>
         {
             commentData.length > 0 ? 
                 <table>
