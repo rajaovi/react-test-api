@@ -3,6 +3,7 @@ import InputString from "../../component/textInput";
 import Button from "../../component/button";
 import axiosRes from "../../api/axiosRes";
 import Backtohome from "../../component/backHome";
+import './index.scss'
 
 const Userchar = () => {
   const [startCharc, setStartChar] = useState("");
@@ -16,11 +17,11 @@ const Userchar = () => {
     const endIndex = alb.indexOf(endCharc);
     let result = alb.slice(startIndex, endIndex + 1);
     axiosRes(
-      "https://jsonplaceholder.typicode.com/users",
+      "https://dummyjson.com/users",
       (res) => {
-        const data = res.data;
+        const data = res.data.users;
         const filteredData = data.filter((val) => {
-          let userNameFirstChar = val.username.slice(0,1).toLowerCase();;
+          let userNameFirstChar = val.username.slice(0,1).toLowerCase();
           return result.indexOf(userNameFirstChar) > -1 ? val : '';
         });
         console.log("filteredData",filteredData);
@@ -37,24 +38,22 @@ const Userchar = () => {
       <Backtohome />
       <form onSubmit={handleSubmit}>
         <p>
-          <span>Start Char</span>
+          <span>Start Character</span>
           <InputString
             inputType="text"
             inputReqired={true}
-            inputPlaceholder="Enter Start Char"
+            inputPlaceholder="Enter Start Character"
             onChangeInput={setStartChar}
           />
-          <h1>{startCharc}</h1>
         </p>
         <p>
-          <span>End Char</span>
+          <span>End Character</span>
           <InputString
             inputType="text"
             inputReqired={true}
-            inputPlaceholder="Enter End Char"
+            inputPlaceholder="Enter End Character"
             onChangeInput={setEndChar}
           />
-          <h1>{endCharc}</h1>
         </p>
         <p>
           <Button btnColor="blue" value="Submit" />
@@ -65,6 +64,7 @@ const Userchar = () => {
           <table>
             <thead>
               <tr>
+                <th>S.No</th>
                 <th>Id</th>
                 <th>Name</th>
                 <th>Username</th>
@@ -76,8 +76,9 @@ const Userchar = () => {
               { apiData.map((val, ind) => {
                 return (
                   <tr key={ind}>
+                    <td>{ind + 1}</td>
                     <td>{val.id}</td>
-                    <td>{val.name}</td>
+                    <td>{val.firstName}</td>
                     <td>{val.username}</td>
                   </tr>
                 );
