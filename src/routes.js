@@ -1,9 +1,9 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 
-import Apilist from './pages/apiList';
-import Commentemail from './pages/commentEmail';
-import Userchar from './pages/userChar';
+import Apilist from "./pages/apiList";
+import Commentemail from "./pages/commentEmail";
+import Userchar from "./pages/userChar";
 
 const RoutePage = () => {
   return (

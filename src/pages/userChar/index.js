@@ -3,12 +3,15 @@ import InputString from "../../component/textInput";
 import Button from "../../component/button";
 import axiosRes from "../../api/axiosRes";
 import Backtohome from "../../component/backHome";
-import './index.scss'
+import "./index.scss";
+import Table from "../../component/table";
 
 const Userchar = () => {
   const [startCharc, setStartChar] = useState("");
   const [endCharc, setEndChar] = useState("");
   const [apiData, setApiData] = useState([]);
+
+  const tableColumns = ["id", "firstName", "username"];
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,11 +24,11 @@ const Userchar = () => {
       (res) => {
         const data = res.data.users;
         const filteredData = data.filter((val) => {
-          let userNameFirstChar = val.username.slice(0,1).toLowerCase();
-          return result.indexOf(userNameFirstChar) > -1 ? val : '';
+          let userNameFirstChar = val.username.slice(0, 1).toLowerCase();
+          return result.indexOf(userNameFirstChar) > -1 ? val : "";
         });
-        console.log("filteredData",filteredData);
-        setApiData(filteredData );
+        console.log("filteredData", filteredData);
+        setApiData(filteredData);
       },
       (err) => {
         alert("Error With the API");
@@ -61,35 +64,11 @@ const Userchar = () => {
       </form>
       <div>
         {apiData.length > 0 ? (
-          <table>
-            <thead>
-              <tr>
-                <th>S.No</th>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Username</th>
-              </tr>
-              <tr></tr>
-              <tr></tr>
-            </thead>
-            <tbody>
-              { apiData.map((val, ind) => {
-                return (
-                  <tr key={ind}>
-                    <td>{ind + 1}</td>
-                    <td>{val.id}</td>
-                    <td>{val.firstName}</td>
-                    <td>{val.username}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+          <Table columns={tableColumns} data={apiData} />
         ) : (
           <h1>Data Not Found</h1>
         )}
       </div>
-      
     </div>
   );
 };
