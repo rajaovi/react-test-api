@@ -1,0 +1,17 @@
+.pagination {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 50px;
+    ul {
+        align-items: center;
+        margin: 0 15px;
+        display: flex;
+        li {
+            margin: 0 10px;
+        }
+    }
+    button {
+        cursor: pointer;
+    }
+}
