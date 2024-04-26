@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import './pagination.scss';
 
-const Pagination = ({totalCount, pageSize, startEndData}) => {
+const Pagination = ({totalCount, pageSize, startEndData, activePageNum}) => {
 
     const totalPageCount = Math.ceil(totalCount / pageSize);
     const [paginationNumber, setPaginationNumber] = useState([]);
+    const [activePageNumber, setActivePageNumber] = useState(activePageNum);
 
     useEffect(()=> {
         let pageNumberArr = [];
@@ -18,7 +19,8 @@ const Pagination = ({totalCount, pageSize, startEndData}) => {
       e.preventDefault();
       const pageMax = val * pageSize;
       const pageMin = pageMax - pageSize;
-      startEndData(pageMin, pageMax)
+      startEndData(pageMin, pageMax);
+      setActivePageNumber(val)
     };
 
     return (
@@ -26,7 +28,7 @@ const Pagination = ({totalCount, pageSize, startEndData}) => {
             <button>Prev</button>
             <ul>
                 {
-                    paginationNumber.map(val => <li key={val}><button onClick={e => handlePageNumber(e, val)}>{val}</button></li>)
+                    paginationNumber.map(val => <li key={val}><button className={activePageNumber === val ? 'active': ''} onClick={e => handlePageNumber(e, val)}>{val}</button></li>)
                 }
             </ul>
             <button>Next</button>
