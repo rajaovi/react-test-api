@@ -7,7 +7,6 @@ const Photolist = () => {
 
   const [photoListData, setPhotoListData] = useState([]);
   const tableColumns = ["id", "title", "url", "thumbnailUrl"];
-  const displayTablesPerPage = 20;
 
   useEffect(() => {
     axiosRes(
@@ -25,7 +24,7 @@ const Photolist = () => {
   return (
     <div className="photoList">
       <Backtohome />
-      <Table columns={tableColumns} data={photoListData} displayTablesPerPage={displayTablesPerPage} />
+      <Table columns={tableColumns} data={photoListData} paginationPerPage="20" />
     </div>
   );
 };

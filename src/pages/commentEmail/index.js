@@ -46,7 +46,7 @@ const Commentemail = () => {
         <Button btnColor="green" value="Submit" />
       </form>
       {commentData.length > 0 ? (
-        <Table columns={tableColumns} data={commentData} />
+        <Table columns={tableColumns} data={commentData} paginationPerPage="10" />
       ) : (
         <h2>Data Not Foud</h2>
       )}

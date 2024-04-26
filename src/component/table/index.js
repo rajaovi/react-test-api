@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import "./index.scss";
 import Pagination from "../pagination";
 
-const Table = ({ columns, data, displayTablesPerPage }) => {
+const Table = ({ columns, data, paginationPerPage }) => {
 
   const [arrayStartData, setArrayStartData] = useState(0);
-  const [arrayEndData, setArrayEndData] = useState(displayTablesPerPage);
+  const [arrayEndData, setArrayEndData] = useState(paginationPerPage);
 
   const handleStartEndData = (start, end) => {
     setArrayStartData(start);
@@ -33,7 +33,7 @@ const Table = ({ columns, data, displayTablesPerPage }) => {
         </tbody>
       </table>
 
-      { data.length > displayTablesPerPage ? <Pagination totalCount={data.length} pageSize={displayTablesPerPage}  startEndData={handleStartEndData} /> : '' }
+      { data.length > paginationPerPage ? <Pagination totalCount={data.length} pageSize={paginationPerPage}  startEndData={handleStartEndData} /> : '' }
       
     </div>
   );

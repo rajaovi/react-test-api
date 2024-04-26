@@ -64,7 +64,7 @@ const Userchar = () => {
       </form>
       <div>
         {apiData.length > 0 ? (
-          <Table columns={tableColumns} data={apiData} />
+          <Table columns={tableColumns} data={apiData} paginationPerPage="5" />
         ) : (
           <h1>Data Not Found</h1>
         )}
