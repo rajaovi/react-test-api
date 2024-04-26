@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./index.scss";
 import Pagination from "../pagination";
 
-const Table = ({ columns, data, paginationPerPage, activePageNumber="1" }) => {
+const Table = ({ columns, data, paginationPerPage, activePageNumber }) => {
 
   const [arrayStartData, setArrayStartData] = useState(0);
   const [arrayEndData, setArrayEndData] = useState(paginationPerPage);

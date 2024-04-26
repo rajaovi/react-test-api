@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import './pagination.scss';
 
-const Pagination = ({totalCount, pageSize, startEndData, activePageNum}) => {
+const Pagination = ({totalCount, pageSize, startEndData, activePageNum=1}) => {
+
+    console.log("activePageNum", activePageNum);
 
     const totalPageCount = Math.ceil(totalCount / pageSize);
     const [paginationNumber, setPaginationNumber] = useState([]);
@@ -25,13 +27,13 @@ const Pagination = ({totalCount, pageSize, startEndData, activePageNum}) => {
 
     return (
         <div className="pagination">
-            <button>Prev</button>
-            <ul>
+            <button className="prevNext prev">P</button>
+            <ul className="paginationList">
                 {
-                    paginationNumber.map(val => <li key={val}><button className={activePageNumber === val ? 'active': ''} onClick={e => handlePageNumber(e, val)}>{val}</button></li>)
+                    paginationNumber.map(val => <li key={val}><button className={`paginationNum ${activePageNumber === val ? 'active': ''}`} onClick={e => handlePageNumber(e, val)}>{val}</button></li>)
                 }
             </ul>
-            <button>Next</button>
+            <button className="prevNext next">N</button>
         </div>
     )
 }

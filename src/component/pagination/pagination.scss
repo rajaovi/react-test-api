@@ -2,16 +2,57 @@
     align-items: center;
     display: flex;
     justify-content: center;
-    margin: 20px 0 50px;
-    ul {
-        align-items: center;
-        margin: 0 15px;
-        display: flex;
-        li {
-            margin: 0 10px;
-        }
-    }
+    margin: 30px 0 50px;
     button {
         cursor: pointer;
     }
 }
+.paginationList {
+    align-items: center;
+    margin: 0 15px;
+    display: flex;
+    li {
+        margin: 0 10px;
+    }
+}
+.paginationNum {
+    background: transparent;
+    border: 0;
+    color: #D1D5DB;
+    font-size: 16px;
+    padding: 0 2px;
+    margin: 0 5px;
+    transition: all .3s ease-in-out;
+    &.active,
+    &:hover {
+        border-bottom: 1px solid ;
+        color: #111827;
+    }
+}
+// .prevNext {
+//     background: transparent;
+//     border: 0;
+//     height: 18px;
+//     position: relative;
+//     width: 32px;
+//     &::before,
+//     &::after {
+//         content: '';
+//         background-color: black;
+//         display: inline-block;
+//         height: 2px;
+//         position: absolute;
+//         width: 10px;
+//     }
+//     &::before {
+//         transform: rotate(-38deg);
+//         top: 9px;
+//     }
+//     &::after {
+//         transform: rotate(33deg);
+//         top: 14px;
+//     }
+//     &.next {
+//         transform: rotate(180deg);
+//     }
+// }
