@@ -11,23 +11,30 @@ const Userchar = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const alb = "abcdefghijklmnopqrstuvwxyz";
+    const startIndex = alb.indexOf(startCharc);
+    const endIndex = alb.indexOf(endCharc);
+    let result = alb.slice(startIndex, endIndex + 1);
     axiosRes(
-        'https://jsonplaceholder.typicode.com/users',
-        (res) => {
-            const data = res.data;
-            console.log('data',data);
-            setApiData(data)
-        },
-        (err) => {
-            alert('Error With the API');
-        }
+      "https://jsonplaceholder.typicode.com/users",
+      (res) => {
+        const data = res.data;
+        const filteredData = data.filter((val) => {
+          let userNameFirstChar = val.username.slice(0,1).toLowerCase();;
+          return result.indexOf(userNameFirstChar) > -1 ? val : '';
+        });
+        console.log("filteredData",filteredData);
+        setApiData(filteredData );
+      },
+      (err) => {
+        alert("Error With the API");
+      }
     );
-}
+  };
 
   return (
     <div className="userChar">
-    <Backtohome />
-
+      <Backtohome />
       <form onSubmit={handleSubmit}>
         <p>
           <span>Start Char</span>
@@ -54,8 +61,34 @@ const Userchar = () => {
         </p>
       </form>
       <div>
-
+        {apiData.length > 0 ? (
+          <table>
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Username</th>
+              </tr>
+              <tr></tr>
+              <tr></tr>
+            </thead>
+            <tbody>
+              { apiData.map((val, ind) => {
+                return (
+                  <tr key={ind}>
+                    <td>{val.id}</td>
+                    <td>{val.name}</td>
+                    <td>{val.username}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        ) : (
+          <h1>Data Not Found</h1>
+        )}
       </div>
+      
     </div>
   );
 };

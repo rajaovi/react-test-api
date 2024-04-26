@@ -5,6 +5,7 @@ const Backtohome = () => {
     return (
        <div className="backHome">
             <Link to="/">Back Home</Link>
+            <hr />
        </div>
     )
 }
