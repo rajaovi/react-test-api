@@ -1,8 +1,8 @@
-import './index.scss'
+import './button.scss'
 
 const Button = ({value, btnColor}) => {
     return (
-        <button className={btnColor}>{value}</button>
+        <button className={`button ${btnColor}`}>{value}</button>
     )
 }
 

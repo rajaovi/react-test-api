@@ -13,6 +13,9 @@ const Apilist = () => {
                 <li>
                     <Link to="/user-char">User Character</Link>
                 </li>
+                <li>
+                    <Link to="/photo-list">Photo list</Link>
+                </li>
             </ul>
         </div>
     )
