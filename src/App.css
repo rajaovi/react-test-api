@@ -19,7 +19,11 @@ table {
 }
 
 a {
+  color: #000;
   text-decoration: none;
+  &:hover {
+    color: #4b4b4b;
+  }
 }
 ul,
 ol,
