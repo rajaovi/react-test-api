@@ -34,15 +34,42 @@ const Pagination = ({
 
   const handlePageNumber = (e, curNum) => {
     e.preventDefault();
+    if(curNum === firstItem) {
+        setdDisablePrevBtn(true);
+        setdDisableNextBtn(false);
+        setdDisablePageFirstBtn(true);
+        setDidisablePageLastBtn(false);
+    }
+    else if(curNum === lastItem) {
+        setdDisablePrevBtn(false);
+        setdDisableNextBtn(true);
+        setdDisablePageFirstBtn(false);
+        setDidisablePageLastBtn(true);
+    }
+    else {
+        setdDisablePrevBtn(false);
+        setdDisableNextBtn(false);
+        setdDisablePageFirstBtn(false);
+        setDidisablePageLastBtn(false);
+    }
     startEndPageNum(curNum);
   };
 
   const handlePrev = (e, curNum) => {
     e.preventDefault();
     const changePageNum = curNum - 1;
-    changePageNum === firstItem
-      ? setdDisablePrevBtn(true)
-      : setdDisablePrevBtn(false);
+    if(changePageNum === firstItem) {
+        setdDisablePrevBtn(true);
+        setdDisableNextBtn(false);
+        setdDisablePageFirstBtn(true);
+        setDidisablePageLastBtn(false);
+    }
+    else {
+        setdDisablePrevBtn(false);
+        setdDisableNextBtn(false);
+        setdDisablePageFirstBtn(false);
+        setDidisablePageLastBtn(false);
+    }
     startEndPageNum(changePageNum);
     setdDisableNextBtn(false);
   };
@@ -50,19 +77,36 @@ const Pagination = ({
   const handleNext = (e, curNum) => {
     e.preventDefault();
     const changePageNum = curNum + 1;
-    changePageNum === lastItem
-      ? setdDisableNextBtn(true)
-      : setdDisableNextBtn(false);
+    if(changePageNum === lastItem) {
+        setdDisablePrevBtn(false);
+        setdDisableNextBtn(true);
+        setdDisablePageFirstBtn(false);
+        setDidisablePageLastBtn(true);
+    }
+    else {
+        setdDisablePrevBtn(false);
+        setdDisableNextBtn(false);
+        setdDisablePageFirstBtn(false);
+        setDidisablePageLastBtn(false);
+    }
     startEndPageNum(changePageNum);
     setdDisablePrevBtn(false);
   };
 
-  const handleFirstPage = () => {
+  const handleFirstPage = (e) => {
+    e.preventDefault();
+    startEndPageNum(firstItem);
+    setdDisablePrevBtn(true);
+    setdDisableNextBtn(false);
     setdDisablePageFirstBtn(true);
     setDidisablePageLastBtn(false);
   };
 
-  const handleLastPage = () => {
+  const handleLastPage = (e) => {
+    e.preventDefault();
+    startEndPageNum(lastItem);
+    setdDisablePrevBtn(false);
+    setdDisableNextBtn(true);
     setdDisablePageFirstBtn(false);
     setDidisablePageLastBtn(true);
   };

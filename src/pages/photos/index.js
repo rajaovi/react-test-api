@@ -14,7 +14,7 @@ const Photolist = () => {
     axiosRes(
       "https://jsonplaceholder.typicode.com/photos",
       (res) => {
-        const data = res.data.slice(0, 100);
+        const data = res.data.slice(0, 80);
         setPhotoListData(data);
         setLoadingMessage(false);
       },
@@ -28,7 +28,7 @@ const Photolist = () => {
     <div className="photoList">
       <Backtohome />
       {
-        loadigMsg ? <Apiloading /> : <Table columns={tableColumns} data={photoListData} paginationPerPage="15" />
+        loadigMsg ? <Apiloading /> : <Table columns={tableColumns} data={photoListData} paginationPerPage="10" />
       }
     </div>
   );
