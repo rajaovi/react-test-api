@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import './apiList.scss'
 
 const Apilist = () => {
     return (

@@ -28,7 +28,7 @@ const Photolist = () => {
     <div className="photoList">
       <Backtohome />
       {
-        loadigMsg ? <Apiloading /> : <Table columns={tableColumns} data={photoListData} paginationPerPage="20" />
+        loadigMsg ? <Apiloading /> : <Table columns={tableColumns} data={photoListData} paginationPerPage="15" />
       }
     </div>
   );
