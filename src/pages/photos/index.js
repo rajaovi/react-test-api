@@ -5,16 +5,15 @@ import Table from "../../component/table";
 import Apiloading from "../../component/apiLoading";
 
 const Photolist = () => {
-
   const [photoListData, setPhotoListData] = useState([]);
-  const [loadigMsg, setLoadingMessage] = useState(true)
+  const [loadingMsg, setLoadingMessage] = useState(true);
   const tableColumns = ["id", "title", "url", "thumbnailUrl"];
 
   useEffect(() => {
     axiosRes(
       "https://jsonplaceholder.typicode.com/photos",
       (res) => {
-        const data = res.data.slice(0, 80);
+        const data = res.data.slice(0, 150);
         setPhotoListData(data);
         setLoadingMessage(false);
       },
@@ -27,9 +26,15 @@ const Photolist = () => {
   return (
     <div className="photoList">
       <Backtohome />
-      {
-        loadigMsg ? <Apiloading /> : <Table columns={tableColumns} data={photoListData} paginationPerPage="10" />
-      }
+      {loadingMsg ? (
+        <Apiloading />
+      ) : (
+        <Table
+          columns={tableColumns}
+          data={photoListData}
+          paginationPerPage="10"
+        />
+      )}
     </div>
   );
 };

@@ -1,8 +1,10 @@
 .pagination {
+    margin: 30px 0 50px;
+}
+.paginationWrapper {
     align-items: center;
     display: flex;
     justify-content: center;
-    margin: 30px 0 50px;
     button {
         cursor: pointer;
         margin-right: 5px;
