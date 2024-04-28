@@ -112,12 +112,14 @@ const Pagination = ({
       <div className="paginationWrapper">
         <button
           onClick={(e) => handleFirstPage(e)}
+          title="First Page"
           className={`firstLast firstPage ${
             disablePageFirstBtn ? "disableBtn" : ""
           }`}
         ></button>
         <button
           onClick={(e) => handlePrev(e, activePageNumber)}
+          title="Previous Page"
           className={`prevNext prev ${disablePrevBtn ? "disableBtn" : ""}`}
         ></button>
         <ul className="paginationList">
@@ -136,10 +138,12 @@ const Pagination = ({
         </ul>
         <button
           onClick={(e) => handleNext(e, activePageNumber)}
+          title="Next Page"
           className={`prevNext next ${disableNextBtn ? "disableBtn" : ""}`}
         ></button>
         <button
           onClick={(e) => handleLastPage(e)}
+          title="Last Page"
           className={`firstLast lastPage ${
             disablePageLastBtn ? "disableBtn" : ""
           }`}
