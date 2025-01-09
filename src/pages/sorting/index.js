@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import axiosRes from "../../api/axiosRes";
 
 const SortingTable = (props) => {
   const [data, setData] = useState([]);
+  const [sortType, setSortType] = useState("default");
 
   useEffect(() => {
     axiosRes(
@@ -16,16 +17,43 @@ const SortingTable = (props) => {
       }
     );
   });
+
+  const sortedData = useMemo(() => {
+    let result = data;
+
+    if (sortType === "descending") {
+      result = [...data].sort((a, b) => {
+        return b.name.localeCompare(a.name);
+      });
+    } else if (sortType === "ascending") {
+      result = [...data].sort((a, b) => {
+        return a.name.localeCompare(b.name);
+      });
+    }
+
+    return result;
+  }, [data, sortType]);
+
   return (
     <>
       <table>
         <thead>
           <tr>
             <th>
-              Id <span>$</span>
+              <span>ID</span>
             </th>
             <th>
-              Name<span>$</span>
+              <span>Name</span>
+              <select
+                defaultValue="default"
+                onChange={(e) => setSortType(e.target.value)}
+              >
+                <option disabled value="default">
+                  Sort by
+                </option>
+                <option value="ascending">Ascending</option>
+                <option value="descending">Descending</option>
+              </select>
             </th>
             <th>
               Email<span>$</span>
@@ -33,7 +61,7 @@ const SortingTable = (props) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((item, index) => {
+          {sortedData.map((item, index) => {
             return (
               <tr key={index}>
                 <td>{item.id}</td>
